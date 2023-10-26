@@ -5,7 +5,7 @@ BEGIN {
   start = Time.now
   puts "\nProfiling...\n\n"
 
-  MemoryProfiler.start(allow_files: 'kramdown')
+  MemoryProfiler.start(allow_files: 'kramdown2')
 }
 
 END {

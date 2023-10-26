@@ -9,23 +9,23 @@ sort_info: 9
 --- name:content
 # Quick Reference
 
-Below are examples of all available structural elements that can be used in a kramdown text. Since
-the kramdown syntax is a superset of the Markdown syntax, only a small part of the available syntax
+Below are examples of all available structural elements that can be used in a kramdown2 text. Since
+the kramdown2 syntax is a superset of the Markdown syntax, only a small part of the available syntax
 is not available in standard Markdown syntax. Note, that only the most basic syntax information is
 given. However, a link to the detailed syntax for each element is provided (which also details the
 differences to the standard Markdown syntax). The quick reference is for version **<%=
-::Kramdown::VERSION %>** of the syntax documentation.
+::Kramdown2::VERSION %>** of the syntax documentation.
 
-kramdown has two main classes of elements: block and span-level elements. Block-level elements are
+kramdown2 has two main classes of elements: block and span-level elements. Block-level elements are
 used to create paragraphs, headers, lists and so on whereas span-level elements are used to markup
 text phrases as emphasized, as a link and so on.
 
-All examples below feature the kramdown source, the converted HTML source (shown when hovering over
-the kramdown source) and the output as it appears in the browser. This looks like this:
+All examples below feature the kramdown2 source, the converted HTML source (shown when hovering over
+the kramdown2 source) and the output as it appears in the browser. This looks like this:
 
 <table class="kdexample">
 <tr>
-<td><pre class="kdexample-before"><code>kramdown example code</code></pre></td>
+<td><pre class="kdexample-before"><code>kramdown2 example code</code></pre></td>
 <td><pre class="kdexample-after-source"><code>Example code converted to HTML</code></pre>
 <div class="kdexample-after-live" style="clear:none">
 Live browser view of example code
@@ -62,7 +62,7 @@ which contains a hard line break.
 
 {kdlink: {oid: headers, part: "headers"}}
 
-kramdown supports Setext style headers and atx style headers. A header must always be preceded by a
+kramdown2 supports Setext style headers and atx style headers. A header must always be preceded by a
 blank line except at the beginning of the document:
 
 
@@ -130,7 +130,7 @@ But this is a separate paragraph.
 
 {kdlink: {oid: code-blocks, part: "code blocks"}}
 
-kramdown supports two different code block styles. One uses lines indented with either four spaces
+kramdown2 supports two different code block styles. One uses lines indented with either four spaces
 or one tab whereas the other uses lines with tilde characters as delimiters -- therefore the content
 does not need to be indented:
 
@@ -164,7 +164,7 @@ end
 
 {kdlink: {oid: horizontal-rules, part: "horizontal rules"}}
 
-It is easy to insert a horizontal rule in kramdown: just use three or more asterisks, dashes or
+It is easy to insert a horizontal rule in kramdown2: just use three or more asterisks, dashes or
 underscores, optionally separated by spaces or tabs, on an otherwise blank line:
 
 {kdexample::}
@@ -182,7 +182,7 @@ underscores, optionally separated by spaces or tabs, on an otherwise blank line:
 
 {kdlink: {oid: lists, part: "lists"}}
 
-kramdown supports ordered and unordered lists. Ordered lists are started by using a number followed
+kramdown2 supports ordered and unordered lists. Ordered lists are started by using a number followed
 by a period, a space and then the list item text. The content of a list item consists of block-level
 elements. All lines which have the same indent as the text of the line with the list marker belong
 to the list item:
@@ -290,7 +290,7 @@ This *is* a term
 
 {kdlink: {oid: tables, part: "tables"}}
 
-kramdown supports a syntax for creating simple tables. A line starting with a pipe character (`|`)
+kramdown2 supports a syntax for creating simple tables. A line starting with a pipe character (`|`)
 starts a table row. However, if the pipe characters is immediately followed by a dash (`-`), a
 separator line is created. Separator lines are used to split the table header from the table body
 (and optionally align the table columns) and to split the table body into multiple parts. If the
@@ -320,10 +320,10 @@ footer.
 
 {kdlink: {oid: html-blocks, part: "HTML blocks"}}
 
-kramdown allows you to use block-level HTML tags (`div`, `p`, `pre`, ...) to markup whole blocks of
-text -- just start a line with a block-level HTML tag. kramdown syntax is normally not processed
+kramdown2 allows you to use block-level HTML tags (`div`, `p`, `pre`, ...) to markup whole blocks of
+text -- just start a line with a block-level HTML tag. kramdown2 syntax is normally not processed
 inside an HTML tag but this can be changed with the `parse_block_html` option. If this options is
-set to `true`, then the content of a block-level HTML tag is parsed by kramdown either as block
+set to `true`, then the content of a block-level HTML tag is parsed by kramdown2 either as block
 level or span-level text, depending on the tag:
 
 {kdexample::}
@@ -371,7 +371,7 @@ A shortcut for setting the ID is also provided. Just prefix the ID with a hash s
 {: #with-an-id}
 {kdexample}
 
-Sometimes one wants to use the same attributes for many elements. kramdown allows you to define the
+Sometimes one wants to use the same attributes for many elements. kramdown2 allows you to define the
 attributes in one place with an *attribute list definition* (or short: ALD) and just reference this
 definition in a block IAL. An ALD has the same structure as a block IAL but the colon has to be
 replace with a colon, the reference name and another colon. By just using the reference name as-is
@@ -397,10 +397,10 @@ paragraph
 
 {kdlink: {oid: extensions, part: "extensions"}}
 
-kramdown provides some less used functionality through a common syntax. This will allow the easy
+kramdown2 provides some less used functionality through a common syntax. This will allow the easy
 addition of other extensions if need arises. Currently, there are extensions for ignoring text (i.e.
 treating text as comment), for inserting arbitrary text as-is into the output and for setting
-kramdown options.
+kramdown2 options.
 
 Here is an example that shows how to insert comments into text:
 
@@ -467,14 +467,14 @@ A simple link can be created by surrounding the text with square brackets and th
 parentheses:
 
 {kdexample::}
-A [link](http://kramdown.gettalong.org)
-to the kramdown homepage.
+A [link](http://kramdown2.gettalong.org)
+to the kramdown2 homepage.
 {kdexample}
 
 You can also add title information to the link:
 
 {kdexample::}
-A [link](http://kramdown.gettalong.org "hp")
+A [link](http://kramdown2.gettalong.org "hp")
 to the homepage.
 {kdexample}
 
@@ -483,18 +483,18 @@ defined using a reference name and this reference name is then used in square br
 the link URL:
 
 {kdexample::}
-A [link][kramdown hp]
+A [link][kramdown2 hp]
 to the homepage.
 
-[kramdown hp]: http://kramdown.gettalong.org "hp"
+[kramdown2 hp]: http://kramdown2.gettalong.org "hp"
 {kdexample}
 
 If the link text itself is the reference name, the second set of square brackets can be omitted:
 
 {kdexample::}
-A link to the [kramdown hp].
+A link to the [kramdown2 hp].
 
-[kramdown hp]: http://kramdown.gettalong.org "hp"
+[kramdown2 hp]: http://kramdown2.gettalong.org "hp"
 {kdexample}
 
 Images can be created in a similar way: just use an exclamation mark before the square brackets. The
@@ -512,8 +512,8 @@ An image: ![gras](img/image.jpg)
 Text phrases can be easily marked up as code by surrounding them with backticks:
 
 {kdexample::}
-Use `Kramdown::Document.new(text).to_html`
-to convert the `text` in kramdown
+Use `Kramdown2::Document.new(text).to_html`
+to convert the `text` in kramdown2
 syntax to HTML.
 {kdexample}
 
@@ -530,7 +530,7 @@ e.g. `` `code` ``.
 
 {kdlink: {oid: footnotes, part: "footnotes"}}
 
-Footnotes can easily be used in kramdown. Just set a footnote marker (consists of square brackets
+Footnotes can easily be used in kramdown2. Just set a footnote marker (consists of square brackets
 with a caret and the footnote name inside) in the text and somewhere else the footnote definition (which
 basically looks like a reference link definition):
 

@@ -2,14 +2,14 @@ require 'benchmark'
 require 'optparse'
 require 'fileutils'
 
-require 'kramdown'
+require 'kramdown2'
 
 options = {:others => false, :average => 1}
 OptionParser.new do |opts|
   opts.on("-a AVG", "--average AVG", Integer, "Average times over the specified number of runs") {|v| options[:average] = v }
   opts.on("-o", "--[no-]others", "Generate data for other parsers") {|v| options[:others] = v}
   opts.on("-g", "--[no-]graph", "Generate graph") {|v| options[:graph] = v}
-  opts.on("-k VERSION", "--kramdown VERSION", String, "Add benchmark data for kramdown version VERSION") {|v| options[:kramdown] = v}
+  opts.on("-k VERSION", "--kramdown2 VERSION", String, "Add benchmark data for kramdown2 version VERSION") {|v| options[:kramdown2] = v}
 end.parse!
 
 THISRUBY = (self.class.const_defined?(:RUBY_DESCRIPTION) ? RUBY_DESCRIPTION.scan(/^.*?(?=\s*\(|,)/).first.sub(/\s/, '-') : "ruby-#{RUBY_VERSION}")
@@ -63,24 +63,24 @@ if options[:others]
   end
 end
 
-if options[:kramdown]
-  kramdown = "kramdown-#{THISRUBY}.dat"
-  data = if File.exist?(kramdown)
-           lines = File.readlines(kramdown).map {|l| l.chomp}
+if options[:kramdown2]
+  kramdown2 = "kramdown2-#{THISRUBY}.dat"
+  data = if File.exist?(kramdown2)
+           lines = File.readlines(kramdown2).map {|l| l.chomp}
            lines.first << " || "
            lines
          else
            ["#      ", *MULTIPLIER.map {|m| "%3d" % m}]
          end
-  data.first << "#{options[:kramdown]}".rjust(10)
+  data.first << "#{options[:kramdown2]}".rjust(10)
 
   times = []
   options[:average].times do
     MULTIPLIER.each_with_index do |m, i|
-      $stderr.puts "Generating benchmark data for kramdown version #{options[:kramdown]}, multiplier #{m}"
+      $stderr.puts "Generating benchmark data for kramdown2 version #{options[:kramdown2]}, multiplier #{m}"
       mddata = BMDATA*m
       begin
-        (times[i] ||= []) << Benchmark::bmbm {|x| x.report { Kramdown::Document.new(mddata).to_html } }.first.real
+        (times[i] ||= []) << Benchmark::bmbm {|x| x.report { Kramdown2::Document.new(mddata).to_html } }.first.real
       rescue
         $stderr.puts $!.message
         (times[i] ||= []) << 0
@@ -88,14 +88,14 @@ if options[:kramdown]
     end
   end
   times.each_with_index {|t,i| data[i+1] << "%14.5f" % (t.inject(0) {|sum,v| sum+v}/t.size)}
-  File.open(kramdown, 'w+') do |f|
+  File.open(kramdown2, 'w+') do |f|
     data.each {|l| f.puts l}
   end
 end
 
 if options[:graph]
-  Dir['kramdown-*.dat'].each do |kramdown_name|
-    theruby = kramdown_name.sub(/^kramdown-/, '').sub(/\.dat$/, '')
+  Dir['kramdown2-*.dat'].each do |kramdown_name|
+    theruby = kramdown_name.sub(/^kramdown2-/, '').sub(/\.dat$/, '')
     graph_name = "graph-#{theruby}.png"
     static_name = "static-#{theruby}.dat"
     kramdown_names = File.readlines(kramdown_name).first.chomp[1..-1].split(/\s*\|\|\s*/)

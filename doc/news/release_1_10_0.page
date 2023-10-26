@@ -1,11 +1,11 @@
 ---
-title: kramdown 1.10.0 released
+title: kramdown2 1.10.0 released
 no_output: true
 sort_info: r1100
 created_at: 2016-03-02 18:43:00 +01:00
 modified_at: 2016-03-02 18:43:00 +01:00
 ---
-## kramdown 1.10.0 released
+## kramdown2 1.10.0 released
 
 This release brings the usual bug fixes but also support for the strikethrough syntax in the GFM
 parser as well as some enhancements regarding the specification of language names for syntax
@@ -27,7 +27,7 @@ highlighting purposes.
 
 * 4 bug fixes:
 
-  - Fixed a problem where `Kramdown::Document.new` would only accept the symbol :input but not the
+  - Fixed a problem where `Kramdown2::Document.new` would only accept the symbol :input but not the
     string 'input' as valid key (fixes [#312], pull request by Sun Yaozhu)
   - Fixed inconsistent behavior: Empty link text is now also allowed for normal links, not just
     images (fixes [#305], reported by cabo)
@@ -43,14 +43,14 @@ highlighting purposes.
     Jefferson)
   - Fixed bad link in API documentation (fixes [#315], reported by Tom MacWright)
 
-[#312]: https://github.com/gettalong/kramdown/pull/312
-[#305]: https://github.com/gettalong/kramdown/issues/305
-[#298]: https://github.com/gettalong/kramdown/issues/298
-[#313]: https://github.com/gettalong/kramdown/pull/313
-[#293]: https://github.com/gettalong/kramdown/issues/293
-[#234]: https://github.com/gettalong/kramdown/issues/234
-[#315]: https://github.com/gettalong/kramdown/issues/315
-[#296]: https://github.com/gettalong/kramdown/pull/296
-[#184]: https://github.com/gettalong/kramdown/pull/184
-[#307]: https://github.com/gettalong/kramdown/pull/307
-[#318]: https://github.com/gettalong/kramdown/issues/318
+[#312]: https://github.com/gettalong/kramdown2/pull/312
+[#305]: https://github.com/gettalong/kramdown2/issues/305
+[#298]: https://github.com/gettalong/kramdown2/issues/298
+[#313]: https://github.com/gettalong/kramdown2/pull/313
+[#293]: https://github.com/gettalong/kramdown2/issues/293
+[#234]: https://github.com/gettalong/kramdown2/issues/234
+[#315]: https://github.com/gettalong/kramdown2/issues/315
+[#296]: https://github.com/gettalong/kramdown2/pull/296
+[#184]: https://github.com/gettalong/kramdown2/pull/184
+[#307]: https://github.com/gettalong/kramdown2/pull/307
+[#318]: https://github.com/gettalong/kramdown2/issues/318

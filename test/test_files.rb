@@ -3,27 +3,27 @@
 #--
 # Copyright (C) 2009-2019 Thomas Leitner <t_leitner@gmx.at>
 #
-# This file is part of kramdown which is licensed under the MIT.
+# This file is part of kramdown2 which is licensed under the MIT.
 #++
 #
 
 require 'minitest/autorun'
-require 'kramdown'
+require 'kramdown2'
 require 'yaml'
 require 'tmpdir'
 require 'open3'
 
 begin
-  require 'kramdown/converter/syntax_highlighter/rouge'
+  require 'kramdown2/converter/syntax_highlighter/rouge'
 
-  Kramdown::Converter::SyntaxHighlighter::Rouge.formatter_class.send(:define_method, :format) do |tokens, &b|
+  Kramdown2::Converter::SyntaxHighlighter::Rouge.formatter_class.send(:define_method, :format) do |tokens, &b|
     super(tokens, &b).sub(/<\/code><\/pre>\n?/, "</code></pre>\n")
   end
 
   # custom formatter for tests
   module Rouge
     module Formatters
-      class RougeHTMLFormatters < Kramdown::Converter::SyntaxHighlighter::Rouge.formatter_class
+      class RougeHTMLFormatters < Kramdown2::Converter::SyntaxHighlighter::Rouge.formatter_class
 
         tag 'rouge_html_formatters'
 
@@ -45,27 +45,27 @@ class TestFiles < Minitest::Test
 
   EXCLUDE_KD_FILES = [].compact
 
-  # Generate test methods for kramdown-to-xxx conversion
+  # Generate test methods for kramdown2-to-xxx conversion
   Dir[File.dirname(__FILE__) + '/testcases/**/*.text'].each do |text_file|
     next if EXCLUDE_KD_FILES.any? {|f| text_file =~ /#{f}/ }
     basename = text_file.sub(/\.text$/, '')
     opts_file = text_file.sub(/\.text$/, '.options')
     (Dir[basename + ".*"] - [text_file, opts_file]).each do |output_file|
       output_format = File.extname(output_file)[1..-1]
-      next unless Kramdown::Converter.const_defined?(output_format[0..0].upcase + output_format[1..-1])
+      next unless Kramdown2::Converter.const_defined?(output_format[0..0].upcase + output_format[1..-1])
       define_method('test_' + text_file.tr('.', '_') + "_to_#{output_format}") do
         opts_file = File.join(File.dirname(text_file), 'options') unless File.exist?(opts_file)
         options = File.exist?(opts_file) ? YAML.load(File.read(opts_file)) : {auto_ids: false, footnote_nr: 1}
-        doc = Kramdown::Document.new(File.read(text_file), options)
+        doc = Kramdown2::Document.new(File.read(text_file), options)
         assert_equal(File.read(output_file), doc.send("to_#{output_format}"))
       end
     end
   end
 
-  # Generate test methods for html-to-{html,kramdown} conversion
+  # Generate test methods for html-to-{html,kramdown2} conversion
   `tidy -v 2>&1`
   if $?.exitstatus != 0
-    warn("Skipping html-to-{html,kramdown} tests because tidy executable is missing")
+    warn("Skipping html-to-{html,kramdown2} tests because tidy executable is missing")
   else
     EXCLUDE_HTML_FILES = [
       'test/testcases/block/06_codeblock/whitespace.html', # bc of span inside pre
@@ -104,7 +104,7 @@ class TestFiles < Minitest::Test
           opts_file = html_file.sub(/\.html(input)?$/, '.options')
           opts_file = File.join(File.dirname(html_file), 'options') unless File.exist?(opts_file)
           options = File.exist?(opts_file) ? YAML.load(File.read(opts_file)) : {auto_ids: false, footnote_nr: 1}
-          doc = Kramdown::Document.new(File.read(html_file), options.merge(input: 'html'))
+          doc = Kramdown2::Document.new(File.read(html_file), options.merge(input: 'html'))
           if out_method == :to_html
             assert_equal(tidy_output(File.read(out_file)), tidy_output(doc.send(out_method)))
           else
@@ -142,8 +142,8 @@ class TestFiles < Minitest::Test
     Dir[File.dirname(__FILE__) + '/testcases/**/*.text'].each do |text_file|
       next if EXCLUDE_LATEX_FILES.any? {|f| text_file =~ /#{f}$/ }
       define_method('test_' + text_file.tr('.', '_') + "_to_latex_compilation") do
-        latex = Kramdown::Document.new(File.read(text_file), auto_ids: false, footnote_nr: 1,
-                                       template: 'document').to_latex
+        latex = Kramdown2::Document.new(File.read(text_file), auto_ids: false, footnote_nr: 1,
+                                        template:                       'document').to_latex
         Dir.mktmpdir do |tmpdir|
           result = IO.popen("latex -output-directory='#{tmpdir}' 2>/dev/null", 'r+') do |io|
             io.write(latex)
@@ -156,10 +156,10 @@ class TestFiles < Minitest::Test
     end
   end
 
-  # Generate test methods for text->kramdown->html conversion
+  # Generate test methods for text->kramdown2->html conversion
   `tidy -v 2>&1`
   if $?.exitstatus != 0
-    warn("Skipping text->kramdown->html tests because tidy executable is missing")
+    warn("Skipping text->kramdown2->html tests because tidy executable is missing")
   else
     EXCLUDE_TEXT_FILES = [
       'test/testcases/span/05_html/markdown_attr.text',  # bc of markdown attr
@@ -194,20 +194,20 @@ class TestFiles < Minitest::Test
         opts_file = text_file.sub(/\.text$/, '.options')
         opts_file = File.join(File.dirname(text_file), 'options') unless File.exist?(opts_file)
         options = File.exist?(opts_file) ? YAML.load(File.read(opts_file)) : {auto_ids: false, footnote_nr: 1}
-        kdtext = Kramdown::Document.new(File.read(text_file), options).to_kramdown
-        html = Kramdown::Document.new(kdtext, options).to_html
+        kdtext = Kramdown2::Document.new(File.read(text_file), options).to_kramdown
+        html = Kramdown2::Document.new(kdtext, options).to_html
         assert_equal(tidy_output(File.read(html_file)), tidy_output(html))
-        kdtext4 = Kramdown::Document.new(File.read(text_file), options.merge({list_indent: 4})).to_kramdown
-        html = Kramdown::Document.new(kdtext4, options).to_html
+        kdtext4 = Kramdown2::Document.new(File.read(text_file), options.merge({ list_indent: 4})).to_kramdown
+        html = Kramdown2::Document.new(kdtext4, options).to_html
         assert_equal(tidy_output(File.read(html_file)), tidy_output(html))
       end
     end
   end
 
-  # Generate test methods for html-to-kramdown-to-html conversion
+  # Generate test methods for html-to-kramdown2-to-html conversion
   `tidy -v 2>&1`
   if $?.exitstatus != 0
-    warn("Skipping html-to-kramdown-to-html tests because tidy executable is missing")
+    warn("Skipping html-to-kramdown2-to-html tests because tidy executable is missing")
   else
     EXCLUDE_HTML_KD_FILES = [
       'test/testcases/span/extension/options.html',        # bc of parse_span_html option
@@ -244,12 +244,12 @@ class TestFiles < Minitest::Test
     Dir[File.dirname(__FILE__) + '/testcases/**/*.html'].each do |html_file|
       next if EXCLUDE_HTML_KD_FILES.any? {|f| html_file =~ /#{f}$/ }
       define_method('test_' + html_file.tr('.', '_') + "_to_kramdown_to_html") do
-        kd = Kramdown::Document.new(File.read(html_file), input: 'html',
-                                    auto_ids: false, footnote_nr: 1).to_kramdown
+        kd = Kramdown2::Document.new(File.read(html_file), input: 'html',
+                                     auto_ids:                    false, footnote_nr: 1).to_kramdown
         opts_file = html_file.sub(/\.html$/, '.options')
         opts_file = File.join(File.dirname(html_file), 'options') unless File.exist?(opts_file)
         options = File.exist?(opts_file) ? YAML.load(File.read(opts_file)) : {auto_ids: false, footnote_nr: 1}
-        doc = Kramdown::Document.new(kd, options)
+        doc = Kramdown2::Document.new(kd, options)
         assert_equal(tidy_output(File.read(html_file)), tidy_output(doc.to_html))
       end
     end
@@ -259,7 +259,7 @@ class TestFiles < Minitest::Test
   Dir[File.dirname(__FILE__) + '/testcases/man/**/*.text'].each do |text_file|
     define_method('test_' + text_file.tr('.', '_') + "_to_man") do
       man_file = text_file.sub(/\.text$/, '.man')
-      doc = Kramdown::Document.new(File.read(text_file))
+      doc = Kramdown2::Document.new(File.read(text_file))
       assert_equal(File.read(man_file), doc.to_man)
     end
   end
@@ -272,14 +272,14 @@ class TestFiles < Minitest::Test
   Dir[File.dirname(__FILE__) + '/testcases/**/*.text'].each do |text_file|
     opts_file = text_file.sub(/\.text$/, '.options')
     options = File.exist?(opts_file) ? YAML.load(File.read(opts_file)) : {auto_ids: false, footnote_nr: 1}
-    (Kramdown::Converter.constants.map(&:to_sym) -
+    (Kramdown2::Converter.constants.map(&:to_sym) -
      [:Base, :RemoveHtmlTags, :MathEngine, :SyntaxHighlighter]).each do |conv_class|
       next if EXCLUDE_MODIFY.any? {|f| text_file =~ /#{f}$/ }
       define_method("test_whether_#{conv_class}_modifies_tree_with_file_#{text_file.tr('.', '_')}") do
-        doc = Kramdown::Document.new(File.read(text_file), options)
+        doc = Kramdown2::Document.new(File.read(text_file), options)
         options_before = Marshal.load(Marshal.dump(doc.options))
         tree_before = Marshal.load(Marshal.dump(doc.root))
-        Kramdown::Converter.const_get(conv_class).convert(doc.root, doc.options)
+        Kramdown2::Converter.const_get(conv_class).convert(doc.root, doc.options)
         assert_equal(options_before, doc.options)
         assert_tree_not_changed(tree_before, doc.root)
       end
@@ -288,7 +288,7 @@ class TestFiles < Minitest::Test
 
   def assert_tree_not_changed(old, new)
     assert_equal(old.type, new.type, "type mismatch")
-    if old.value.kind_of?(Kramdown::Element)
+    if old.value.kind_of?(Kramdown2::Element)
       assert_tree_not_changed(old.value, new.value)
     else
       assert(old.value == new.value, "value mismatch")

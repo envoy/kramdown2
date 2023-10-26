@@ -23,11 +23,11 @@ begin
 
     def parse_files(options)
       file_info = old_parse_files(options)
-      require 'kramdown/options'
+      require 'kramdown2/options'
 
-      # Add options documentation to Kramdown::Options module
-      opt_module = @store.all_classes_and_modules.find {|m| m.full_name == 'Kramdown::Options' }
-      opt_defs = Kramdown::Options.definitions.sort.collect do |n, definition|
+      # Add options documentation to Kramdown2::Options module
+      opt_module = @store.all_classes_and_modules.find {|m| m.full_name == 'Kramdown2::Options' }
+      opt_defs = Kramdown2::Options.definitions.sort.collect do |n, definition|
         desc = definition.desc.split(/\n/).map {|l| "    #{l}" }
         desc[-2] = []
         desc = desc.join("\n")
@@ -53,7 +53,7 @@ require 'rake/packagetask'
 require 'erb'
 
 $:.unshift('lib')
-require 'kramdown'
+require 'kramdown2'
 
 # End user tasks ################################################################
 
@@ -82,8 +82,8 @@ end
 if defined? RDoc::Task
   rd = RDoc::Task.new do |rdoc|
     rdoc.rdoc_dir = 'htmldoc/rdoc'
-    rdoc.title = 'kramdown'
-    rdoc.main = 'lib/kramdown/document.rb'
+    rdoc.title = 'kramdown2'
+    rdoc.main = 'lib/kramdown2/document.rb'
     rdoc.rdoc_files.include('lib')
   end
 end
@@ -102,14 +102,14 @@ end
 # Release tasks and development tasks ############################################
 
 namespace :dev do
-  SUMMARY = 'kramdown is a fast, pure-Ruby Markdown-superset converter.'
+  SUMMARY = 'kramdown2 is a fast, pure-Ruby Markdown-superset converter.'
   DESCRIPTION = <<~EOF
-    kramdown is yet-another-markdown-parser but fast, pure Ruby,
+    kramdown2 is yet-another-markdown-parser but fast, pure Ruby,
     using a strict syntax definition and supporting several common extensions.
   EOF
 
   begin
-    data = File.read('doc/news/release_' + Kramdown::VERSION.split('.').join('_') + '.page')
+    data = File.read('doc/news/release_' + Kramdown2::VERSION.split('.').join('_') + '.page')
     REL_PAGE = Webgen::Page.from_data(data)
   rescue StandardError
     puts 'NO RELEASE NOTES/CHANGES FILE'
@@ -122,7 +122,7 @@ namespace :dev do
                              'COPYING',
                              'data/**/*',
                              'lib/**/*.rb',
-                             'man/man1/kramdown.1',
+                             'man/man1/kramdown2.1',
                              'README.md',
                              'test/**/*',
                              'VERSION',
@@ -131,7 +131,7 @@ namespace :dev do
   CLOBBER << "VERSION"
   file 'VERSION' do
     puts "Generating VERSION file"
-    File.write('VERSION', Kramdown::VERSION + "\n")
+    File.write('VERSION', Kramdown2::VERSION + "\n")
   end
 
   CLOBBER << 'CONTRIBUTERS'
@@ -142,16 +142,16 @@ namespace :dev do
     `git log | grep ^Author: | sed 's/^Author: //' | sort | uniq -c | sort -nr >> CONTRIBUTERS`
   end
 
-  CLOBBER << "man/man1/kramdown.1"
-  file 'man/man1/kramdown.1' => ['man/man1/kramdown.1.erb'] do
-    puts "Generating kramdown man page"
-    File.open('man/man1/kramdown.1', 'w+') do |file|
-      data = ERB.new(File.read('man/man1/kramdown.1.erb')).result(binding)
-      file.write(Kramdown::Document.new(data).to_man)
+  CLOBBER << "man/man1/kramdown2.1"
+  file 'man/man1/kramdown2.1' => ['man/man1/kramdown2.1.erb'] do
+    puts "Generating kramdown2 man page"
+    File.open('man/man1/kramdown2.1', 'w+') do |file|
+      data = ERB.new(File.read('man/man1/kramdown2.1.erb')).result(binding)
+      file.write(Kramdown2::Document.new(data).to_man)
     end
   end
 
-  Rake::PackageTask.new('kramdown', Kramdown::VERSION) do |pkg|
+  Rake::PackageTask.new('kramdown2', Kramdown2::VERSION) do |pkg|
     pkg.need_tar = true
     pkg.need_zip = true
     pkg.package_files = PKG_FILES
@@ -160,8 +160,8 @@ namespace :dev do
   if defined? Gem
     spec = Gem::Specification.new do |s|
       #### Basic information
-      s.name = 'kramdown'
-      s.version = Kramdown::VERSION
+      s.name = 'kramdown2'
+      s.version = Kramdown2::VERSION
       s.summary = SUMMARY
       s.description = DESCRIPTION
       s.license = 'MIT'
@@ -170,7 +170,7 @@ namespace :dev do
       s.files = PKG_FILES.to_a
 
       s.require_path = 'lib'
-      s.executables = ['kramdown']
+      s.executables = ['kramdown2']
       s.required_ruby_version = '>= 2.3'
       s.add_dependency "rexml"
       s.add_development_dependency 'minitest', '~> 5.0'
@@ -179,19 +179,19 @@ namespace :dev do
 
       #### Documentation
 
-      s.rdoc_options = ['--main', 'lib/kramdown/document.rb']
+      s.rdoc_options = ['--main', 'lib/kramdown2/document.rb']
 
       #### Author and project details
 
       s.author = 'Thomas Leitner'
       s.email = 't_leitner@gmx.at'
-      s.homepage = "http://kramdown.gettalong.org"
+      s.homepage = "http://kramdown2.gettalong.org"
     end
 
-    task gemspec: ['CONTRIBUTERS', 'VERSION', 'man/man1/kramdown.1'] do
+    task gemspec: ['CONTRIBUTERS', 'VERSION', 'man/man1/kramdown2.1'] do
       print "Generating Gemspec\n"
       contents = spec.to_ruby
-      File.write("kramdown.gemspec", contents)
+      File.write("kramdown2.gemspec", contents)
     end
 
     Gem::PackageTask.new(spec) do |pkg|
@@ -202,14 +202,14 @@ namespace :dev do
   end
 
   if defined?(Webgen) && defined?(Gem) && defined?(Rake::RDocTask)
-    desc 'Release Kramdown version ' + Kramdown::VERSION
+    desc 'Release Kramdown2 version ' + Kramdown2::VERSION
     task release: [:clobber, :package, :publish_files, :publish_website]
   end
 
   if defined?(Gem)
     desc "Upload the release to Rubygems"
     task publish_files: [:package] do
-      sh "gem push pkg/kramdown-#{Kramdown::VERSION}.gem"
+      sh "gem push pkg/kramdown2-#{Kramdown2::VERSION}.gem"
       puts 'done'
     end
   end
@@ -217,7 +217,7 @@ namespace :dev do
   desc "Upload the website"
   task publish_website: ['doc'] do
     puts "Transfer manually!!!"
-    # sh "rsync -avc --delete --exclude 'MathJax' --exclude 'robots.txt'  htmldoc/ gettalong@rubyforge.org:/var/www/gforge-projects/kramdown/"
+    # sh "rsync -avc --delete --exclude 'MathJax' --exclude 'robots.txt'  htmldoc/ gettalong@rubyforge.org:/var/www/gforge-projects/kramdown2/"
   end
 
   if defined? Rcov
@@ -232,7 +232,7 @@ namespace :dev do
     #--
     # Copyright (C) 2009-2019 Thomas Leitner <t_leitner@gmx.at>
     #
-    # This file is part of kramdown which is licensed under the MIT.
+    # This file is part of kramdown2 which is licensed under the MIT.
     #++
     #
   EOF

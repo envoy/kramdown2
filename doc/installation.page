@@ -7,13 +7,13 @@ sort_info: 5
 
 ## Dependencies
 
-Since kramdown is written in Ruby, you just need the [Ruby interpreter](http://www.ruby-lang.org),
+Since kramdown2 is written in Ruby, you just need the [Ruby interpreter](http://www.ruby-lang.org),
 version 2.3 or later. There are no other dependencies.
 
 
 ## Compatibility Notes
 
-kramdown should work on any platform which supports Ruby. It has been successfully tested on the
+kramdown2 should work on any platform which supports Ruby. It has been successfully tested on the
 following platforms:
 
 * Linux with Ruby 2.3 or later and jruby 9.0.0.0.
@@ -32,17 +32,17 @@ need to do is:
 
     sudo apt-get install ruby
 
-Once you have Ruby installed, you need to execute the following command to install kramdown:
+Once you have Ruby installed, you need to execute the following command to install kramdown2:
 
-    sudo gem install kramdown
+    sudo gem install kramdown2
 
 
 ### Mac OS X
 
-Mac OS X Snow Leopard comes with Ruby and Rubygems preinstalled. So installing kramdown is as easy
+Mac OS X Snow Leopard comes with Ruby and Rubygems preinstalled. So installing kramdown2 is as easy
 as running:
 
-    sudo gem install kramdown
+    sudo gem install kramdown2
 
 
 ### Windows
@@ -51,7 +51,7 @@ You need to install Ruby first. This can easily be done by using the [RubyInstal
 the installation binary and run it. After that open a command shell (select `Start -> Run...`, then
 enter `cmd` and click on `Ok`) and type in the following:
 
-    gem install kramdown
+    gem install kramdown2
 
 [RubyInstaller]: http://rubyinstaller.org
 
@@ -61,28 +61,28 @@ enter `cmd` and click on `Ok`) and type in the following:
 
 ### Using Rubygems
 
-If you are using Rubygems, installing the latest version of kramdown is as simple as executing
+If you are using Rubygems, installing the latest version of kramdown2 is as simple as executing
 
-    gem install kramdown
+    gem install kramdown2
 
 
 ### Manual Installation
 
-The latest version of kramdown can always be downloaded as `.tar.gz` or `.zip` via the [Github
+The latest version of kramdown2 can always be downloaded as `.tar.gz` or `.zip` via the [Github
 releases page][ghreleases]. After the download the package needs to be decompressed and then you can
-install kramdown using the included `setup.rb` installation method:
+install kramdown2 using the included `setup.rb` installation method:
 
     $ ruby setup.rb config
     $ ruby setup.rb setup
     $ ruby setup.rb install
 
-[ghreleases]: https://github.com/gettalong/kramdown/releases
+[ghreleases]: https://github.com/gettalong/kramdown2/releases
 
 
 ### Using the repository version
 
-kramdown uses git as its versioning system and kramdown's repository is hosted on GitHub. The
-repository always contains a clean state of the current development version of kramdown. To check
-out kramdown use the following command:
+kramdown2 uses git as its versioning system and kramdown2's repository is hosted on GitHub. The
+repository always contains a clean state of the current development version of kramdown2. To check
+out kramdown2 use the following command:
 
-     git clone git://github.com/gettalong/kramdown.git
+     git clone git://github.com/gettalong/kramdown2.git

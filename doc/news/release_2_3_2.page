@@ -1,11 +1,11 @@
 ---
-title: kramdown 2.3.2 released
+title: kramdown2 2.3.2 released
 no_output: true
 sort_info: r2032
 created_at: 2022-03-18 22:30:00 +01:00
 modified_at: 2022-03-18 22:30:00 +01:00
 ---
-## kramdown 2.3.2 released
+## kramdown2 2.3.2 released
 
 This release brings various bug fixes.
 
@@ -25,8 +25,8 @@ This release brings various bug fixes.
   - Enhanced documentation for "forbidden_inline_options" configuration option (fixes [#750] by
     Emily Grace Seville)
 
-[#749]: https://github.com/gettalong/kramdown/issues/749
-[#750]: https://github.com/gettalong/kramdown/issues/750
+[#749]: https://github.com/gettalong/kramdown2/issues/749
+[#750]: https://github.com/gettalong/kramdown2/issues/750
 
-[#748]: https://github.com/gettalong/kramdown/pull/748
-[#740]: https://github.com/gettalong/kramdown/pull/740
+[#748]: https://github.com/gettalong/kramdown2/pull/748
+[#740]: https://github.com/gettalong/kramdown2/pull/740

@@ -3,9 +3,9 @@ title: Markdown Parser
 ---
 # Markdown Parser
 
-This parser parses text in [Markdown] format. It is based on the [kramdown parser](kramdown.html)
-and just removes the functionality for parsing the additional markup that the kramdown syntax
-supports. Since some things are handled differently by the kramdown parser (like deciding when a
+This parser parses text in [Markdown] format. It is based on the [kramdown2 parser](kramdown2.html)
+and just removes the functionality for parsing the additional markup that the kramdown2 syntax
+supports. Since some things are handled differently by the kramdown2 parser (like deciding when a
 list item contains just text), this parser differs from real Markdown parsers in some minor
 respects.
 

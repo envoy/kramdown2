@@ -5,14 +5,14 @@ title: HTML Converter
 
 ## Introduction
 
-This converter converts a kramdown element tree into an HTML fragment and supports all available
+This converter converts a kramdown2 element tree into an HTML fragment and supports all available
 element types. Below is a list of additional features of the HTML converter as well as some
 additional information.
 
 
 ## Automatic Generation of Header IDs    {#auto-ids}
 
-kramdown supports the automatic generation of header IDs if the option `auto_ids` is set to `true`
+kramdown2 supports the automatic generation of header IDs if the option `auto_ids` is set to `true`
 (which is the default). This is done by converting the untransformed, i.e. plain, header text (or,
 if the option `auto_id_stripping` is set, only the text from real text elements) via the following
 steps:
@@ -76,7 +76,7 @@ following CSS classes:
 
 ## Automatic Syntax Highlighting   {#syntax-highlighting}
 
-kramdown supports setting a code language for code blocks and code spans, see [Language of Code
+kramdown2 supports setting a code language for code blocks and code spans, see [Language of Code
 Blocks](../syntax.html#language-of-code-blocks). This language will be used for highlighting code
 blocks and spans.
 
@@ -90,7 +90,7 @@ compatible, i.e. it supports all of Pygments CSS themes.
 
 ## Math Support
 
-kramdown supports the use of various math engines. The default math engine is
+kramdown2 supports the use of various math engines. The default math engine is
 [MathJax](../math_engine/mathjax.html) (which can also be used with
 [KaTeX](https://khan.github.io/KaTeX/)).
 
@@ -100,7 +100,7 @@ and CSS. Note that the CSS includes references to webfonts.
 Also available are precompiling versions to eliminate the need for client-side Javascript. Those are
 [Mathjax-Node](../math_engine/mathjaxnode.html), [KaTeX](../math_engine/katex.html), and
 [SsKaTeX](../math_engine/sskatex.html). Each one requires a Javascript engine installed where
-kramdown runs, in order to perform the precompilation. The resulting pages still require CSS and
+kramdown2 runs, in order to perform the precompilation. The resulting pages still require CSS and
 fonts, but no Javascript anymore.
 
 Alternative math engines are [Ritex](../math_engine/ritex.html) and
@@ -109,13 +109,13 @@ Alternative math engines are [Ritex](../math_engine/ritex.html) and
 
 ## Emphasis
 
-kramdown uses the HTML element `em` to style light and the element `strong` to style strong
+kramdown2 uses the HTML element `em` to style light and the element `strong` to style strong
 emphasized text parts.
 
 
 ## Definition Lists
 
-kramdown allows the automatic generation of element IDs for terms of a definition list. The
+kramdown2 allows the automatic generation of element IDs for terms of a definition list. The
 algorithm is the same as with headers (see [above](#auto-ids) except that the last two points about
 adding "section" and unique IDs is not respected. Also, the algorithm works only on the real text as
 if `auto_id_stripping` was activated.
@@ -152,7 +152,7 @@ replaced with the footnotes, instead of placing the footnotes at the end of the 
 
 ## Automatic "Table of Contents" Generation    {#toc}
 
-kramdown supports the automatic generation of the table of contents of all headers that have an ID
+kramdown2 supports the automatic generation of the table of contents of all headers that have an ID
 set. Just assign the reference name "toc" to an ordered or unordered list by using an IAL and the
 list will be replaced with the actual table of contents, rendered as nested unordered lists if "toc"
 was applied to an unordered list or else as nested ordered lists. All attributes applied to the

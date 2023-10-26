@@ -1,8 +1,8 @@
---- name:sidebar pipeline:erb,tags,kramdown
+--- name:sidebar pipeline:erb,tags,kramdown2
 <h1>Documentation</h1>
 
 * Parsers
-  * [kramdown](parser/kramdown.html)
+  * [kramdown2](parser/kramdown2.html)
   * [GFM](parser/gfm.html)
   * [Markdown](parser/markdown.html)
   * [HTML](parser/html.html)
@@ -10,7 +10,7 @@
   * [HTML](converter/html.html)
   * [LaTeX](converter/latex.html)
   * [man](converter/man.html)
-  * [kramdown](converter/kramdown.html)
+  * [kramdown2](converter/kramdown2.html)
   * [RemoveHtmlTags](converter/remove_html_tags.html)
 * Syntax Highlighters
   * [Rouge](syntax_highlighter/rouge.html)

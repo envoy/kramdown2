@@ -3,12 +3,12 @@
 #--
 # Copyright (C) 2009-2019 Thomas Leitner <t_leitner@gmx.at>
 #
-# This file is part of kramdown which is licensed under the MIT.
+# This file is part of kramdown2 which is licensed under the MIT.
 #++
 #
 
 require 'minitest/autorun'
-require 'kramdown'
+require 'kramdown2'
 
 Encoding.default_external = 'utf-8'
 
@@ -25,10 +25,10 @@ describe 'location' do
     end
   end
 
-  # Test cases consist of a kramdown string that uses IALs to specify the expected
+  # Test cases consist of a kramdown2 string that uses IALs to specify the expected
   # line numbers for a given element.
   test_cases = {
-    'autolink' => %(testing autolinks\n\n<http://kramdown.org>{:.line-3}),
+    'autolink' => %(testing autolinks\n\n<http://kramdown2.org>{:.line-3}),
     'blockquote' => %(
       > block quote1
       >
@@ -175,7 +175,7 @@ describe 'location' do
   }
   test_cases.each do |name, test_string|
     it "Handles #{name}" do
-      doc = Kramdown::Document.new(test_string.gsub(/^      /, '').strip)
+      doc = Kramdown2::Document.new(test_string.gsub(/^      /, '').strip)
       check_element_for_location(doc.root)
     end
   end
@@ -186,13 +186,13 @@ describe 'location' do
 *[duplicate]: The first definition
 *[duplicate]: The second definition
     )
-    doc = Kramdown::Document.new(test_string.strip)
+    doc = Kramdown2::Document.new(test_string.strip)
     assert_equal(["Duplicate abbreviation ID 'duplicate' on line 4 - overwriting"], doc.warnings)
   end
 
   it 'handles abbreviations' do
     str = "This *is* ABC and\n**and** ABC second\nanother ABC\nas ABC as\nABC at the end.\n\n*[ABC]: ABC"
-    doc = Kramdown::Document.new(str)
+    doc = Kramdown2::Document.new(str)
     doc.root.children.first.children.select {|e| e.type == :abbreviation }.each_with_index do |e, i|
       assert_equal(i + 1, e.options[:location])
     end
@@ -200,7 +200,7 @@ describe 'location' do
 
   it 'handles line breaks' do
     str = "First  \nsecond\\\\\nthird  \n"
-    doc = Kramdown::Document.new(str)
+    doc = Kramdown2::Document.new(str)
     doc.root.children.first.children.select {|e| e.type == :br }.each_with_index do |e, i|
       assert_equal(i + 1, e.options[:location])
     end
@@ -208,7 +208,7 @@ describe 'location' do
 
   it 'handles smart quotes' do
     str = "This is 'first'\nand 'second' and\n'third'"
-    doc = Kramdown::Document.new(str)
+    doc = Kramdown2::Document.new(str)
     doc.root.children.first.children.select {|e| e.type == :smart_quote }.each_with_index do |e, i|
       assert_equal(((i + 1) / 2.0).ceil, e.options[:location])
     end

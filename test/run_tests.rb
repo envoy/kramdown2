@@ -3,12 +3,12 @@
 #--
 # Copyright (C) 2009-2019 Thomas Leitner <t_leitner@gmx.at>
 #
-# This file is part of kramdown which is licensed under the MIT.
+# This file is part of kramdown2 which is licensed under the MIT.
 #++
 #
 
 $:.unshift File.dirname(__FILE__) + '/../lib'
-require 'kramdown'
+require 'kramdown2'
 require 'test/unit/assertions'
 require 'yaml'
 
@@ -33,7 +33,7 @@ Dir[arg].each {|f| fwidth = [fwidth, f.length + 10].max }.each do |file|
   opts_file = file.sub('.text', '.options')
   opts_file = File.join(File.dirname(file), 'options') unless File.exist?(opts_file)
   options = File.exist?(opts_file) ? YAML.safe_load(File.read(opts_file)) : {auto_ids: false, footnote_nr: 1}
-  doc = Kramdown::Document.new(File.read(file), options)
+  doc = Kramdown2::Document.new(File.read(file), options)
   begin
     assert_equal(File.read(html_file), doc.to_html)
     puts 'PASSED'

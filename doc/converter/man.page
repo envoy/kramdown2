@@ -5,7 +5,7 @@ title: Man Page Converter
 
 ## Introduction
 
-This converter takes a kramdown document and converts into a [man page] in groff format. Some
+This converter takes a kramdown2 document and converts into a [man page] in groff format. Some
 elements like images are not supported because they are not supported by groff.
 
 [man page]: http://man7.org/linux/man-pages/man7/man-pages.7.html
@@ -23,7 +23,7 @@ name(1) -- short description of command
 ## DESCRIPTION
 
 All block elements like paragraphs, blockquotes, lists, ... work as they
-do with normal kramdown documents.
+do with normal kramdown2 documents.
 
 Use code spans for `code`, `--options` and `user input`, emphasis for
 *variables*, *argument names* and *file names*, and **strong emphasis**
@@ -127,7 +127,7 @@ identifiers are separated by commas:
 When viewing manual pages in a terminal, there are basically only two ways to style some piece of
 text: boldface and italics (which are often displayed using underline).
 
-The three basic inline markup formats of kramdown are used in the following ways:
+The three basic inline markup formats of kramdown2 are used in the following ways:
 
 `` `backticks` ``
 : The text will be shown in **boldface**. Should be used for code, options and user input. As usual
@@ -144,7 +144,7 @@ The three basic inline markup formats of kramdown are used in the following ways
 
 ### Other Elements
 
-The converter also supports all other kramdown elements, including tables and math blocks, except
+The converter also supports all other kramdown2 elements, including tables and math blocks, except
 the following:
 
 * Images

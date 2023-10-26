@@ -5,7 +5,7 @@ title: LaTeX Converter
 
 ## Introduction
 
-This converter converts a kramdown element tree into LaTeX. It supports all available element types
+This converter converts a kramdown2 element tree into LaTeX. It supports all available element types
 except the HTML specific ones. The LaTeX document can, for example, further be converted to a PDF
 file to produce a high quality, printable version.
 

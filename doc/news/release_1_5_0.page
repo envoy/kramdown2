@@ -1,11 +1,11 @@
 ---
-title: kramdown 1.5.0 released
+title: kramdown2 1.5.0 released
 no_output: true
 sort_info: r0150
 created_at: 2014-10-25 22:30:00 +02:00
 modified_at: 2014-10-25 22:30:00 +02:00
 ---
-## kramdown 1.5.0 released
+## kramdown2 1.5.0 released
 
 This release brings the addition of [Rouge] as supported syntax highlighting engine besides Coderay
 as well as support for MathML output in the HTML converter through the libraries [Ritex] or
@@ -49,10 +49,10 @@ options instead. The latter also take precedence over the former 'coderay_\*' op
 ['syntax_highlighter_opts']: ../options.html#option-syntax-highlighter-opts
 ['math_engine']: ../options.html#option-math-engine
 
-[#171]: https://github.com/gettalong/kramdown/issues/171
-[#76]: https://github.com/gettalong/kramdown/issues/76
-[#24]: https://github.com/gettalong/kramdown/issues/24
-[#68]: https://github.com/gettalong/kramdown/pull/68#issuecomment-30100236
-[#141]: https://github.com/gettalong/kramdown/issues/141
-[#169]: https://github.com/gettalong/kramdown/pull/169
-[#173]: https://github.com/gettalong/kramdown/issues/173
+[#171]: https://github.com/gettalong/kramdown2/issues/171
+[#76]: https://github.com/gettalong/kramdown2/issues/76
+[#24]: https://github.com/gettalong/kramdown2/issues/24
+[#68]: https://github.com/gettalong/kramdown2/pull/68#issuecomment-30100236
+[#141]: https://github.com/gettalong/kramdown2/issues/141
+[#169]: https://github.com/gettalong/kramdown2/pull/169
+[#173]: https://github.com/gettalong/kramdown2/issues/173

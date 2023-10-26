@@ -1,16 +1,16 @@
 ---
-title: kramdown 2.3.0 released
+title: kramdown2 2.3.0 released
 no_output: true
 sort_info: r2030
 created_at: 2020-06-28 23:33:00 +02:00
 modified_at: 2020-06-28 23:33:00 +02:00
 ---
-## kramdown 2.3.0 released
+## kramdown2 2.3.0 released
 
 Although this is a minor version bump there is **one breaking change**: Parsing of XML processing
 instructions was removed because they are invalid for HTML5 documents.
 
-This change should only affect a negligible amount of existing kramdown documents since XML
+This change should only affect a negligible amount of existing kramdown2 documents since XML
 processing instructions were never something a normal user would use.
 
 Additionally, CVE-2020-14001 (reported by [Javier Rivera](mailto:bytesrabbit@protonmail.com)) is
@@ -23,7 +23,7 @@ option. **This means updating is highly recommended!**
 
   - New option 'forbidden_inline_options' to restrict the options allowed with the `{::options /}`
     extension. This also addresses the security issue described in [CVE-2020-14001].
-  - Parsing of XML processing instructions is not done anymore for kramdown documents because they
+  - Parsing of XML processing instructions is not done anymore for kramdown2 documents because they
     are invalid for HTML5 (fixes issue [#660] by Samuel Williams)
 
 * 1 minor change:
@@ -42,14 +42,14 @@ option. **This means updating is highly recommended!**
 
   - Documentation fixes and updates (issue [#662] by Samuel Williams, PR [#656] by Noah Doersing)
 
-[#658]: https://github.com/gettalong/kramdown/issues/658
-[#663]: https://github.com/gettalong/kramdown/issues/663
-[#662]: https://github.com/gettalong/kramdown/issues/662
-[#660]: https://github.com/gettalong/kramdown/issues/660
+[#658]: https://github.com/gettalong/kramdown2/issues/658
+[#663]: https://github.com/gettalong/kramdown2/issues/663
+[#662]: https://github.com/gettalong/kramdown2/issues/662
+[#660]: https://github.com/gettalong/kramdown2/issues/660
 
-[#654]: https://github.com/gettalong/kramdown/pull/654
-[#655]: https://github.com/gettalong/kramdown/pull/655
-[#656]: https://github.com/gettalong/kramdown/pull/656
-[#665]: https://github.com/gettalong/kramdown/pull/665
+[#654]: https://github.com/gettalong/kramdown2/pull/654
+[#655]: https://github.com/gettalong/kramdown2/pull/655
+[#656]: https://github.com/gettalong/kramdown2/pull/656
+[#665]: https://github.com/gettalong/kramdown2/pull/665
 
 [CVE-2020-14001]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-14001

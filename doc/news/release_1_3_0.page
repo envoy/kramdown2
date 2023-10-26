@@ -1,13 +1,13 @@
 ---
-title: kramdown 1.3.0 released
+title: kramdown2 1.3.0 released
 no_output: true
 sort_info: r0130
 created_at: 2013-12-08 20:45:00 +01:00
 modified_at: 2013-12-08 20:45:00 +01:00
 ---
-## kramdown 1.3.0 released
+## kramdown2 1.3.0 released
 
-This release brings a pure Ruby PDF converter for kramdown based on the Prawn library. The PDF
+This release brings a pure Ruby PDF converter for kramdown2 based on the Prawn library. The PDF
 output can be customized by sub-classing the converter or by using a template file that adjusts the
 converter object.
 
@@ -25,7 +25,7 @@ converter object.
   - New option 'hard_wrap' for configuring the line break behaviour of the GFM parser ([GH#83],
     patch by Brandur)
   - Location information (only line numbers) are now available in the :location option on most
-    kramdown elements ([GH#96] patch by Jo Hund)
+    kramdown2 elements ([GH#96] patch by Jo Hund)
   - Minitest 5.x is now used for testing.
   - A converter class can now specify whether a template should be applied before, after or before
     and after the conversion.
@@ -42,11 +42,11 @@ converter object.
     der Veldt)
   - Fixed [GH#91]: Template extension is now the same as the converter name (initial patch by
     Andreas Josephson)
-  - Fixed output of consecutive em/strong elements in kramdown converter
+  - Fixed output of consecutive em/strong elements in kramdown2 converter
 
 * 3 documentation fixes:
 
-  - The kramdown website is now hosted at <http://kramdown.gettalong.org> - please update your
+  - The kramdown2 website is now hosted at <http://kramdown2.gettalong.org> - please update your
     bookmarks!
   - Fixed [GH#80]: Typo in README.md (patch by Luca Barbato)
   - Fixed [GH#81]: Typo in options documentation (patch by Pete Michaud)
@@ -56,11 +56,11 @@ converter object.
   - Using `.convertername` instead of `.converter_name` is deprecated and will be removed in 2.0
   - The option 'auto_id_stripping' will be removed in 2.0 because it will be the default.
 
-[GH#77]: https://github.com/gettalong/kramdown/issues/77
-[GH#95]: https://github.com/gettalong/kramdown/issues/95
-[GH#90]: https://github.com/gettalong/kramdown/issues/90
-[GH#80]: https://github.com/gettalong/kramdown/pull/80
-[GH#81]: https://github.com/gettalong/kramdown/pull/81
-[GH#91]: https://github.com/gettalong/kramdown/pull/91
-[GH#83]: https://github.com/gettalong/kramdown/pull/83
-[GH#96]: https://github.com/gettalong/kramdown/pull/96
+[GH#77]: https://github.com/gettalong/kramdown2/issues/77
+[GH#95]: https://github.com/gettalong/kramdown2/issues/95
+[GH#90]: https://github.com/gettalong/kramdown2/issues/90
+[GH#80]: https://github.com/gettalong/kramdown2/pull/80
+[GH#81]: https://github.com/gettalong/kramdown2/pull/81
+[GH#91]: https://github.com/gettalong/kramdown2/pull/91
+[GH#83]: https://github.com/gettalong/kramdown2/pull/83
+[GH#96]: https://github.com/gettalong/kramdown2/pull/96

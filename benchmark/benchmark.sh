@@ -38,14 +38,14 @@ while getopts "r:k:om:a:" optname; do
     esac
 done
 
-TMPDIR=/tmp/kramdown-benchmark
+TMPDIR=/tmp/kramdown2-benchmark
 
 rm -rf $TMPDIR
 mkdir -p $TMPDIR
 cp benchmark/md* $TMPDIR
 cp benchmark/generate_data.rb $TMPDIR
-git clone .git ${TMPDIR}/kramdown
-cd ${TMPDIR}/kramdown
+git clone .git ${TMPDIR}/kramdown2
+cd ${TMPDIR}/kramdown2
 
 for RUBY_VERSION in $RUBY_VERSIONS; do
   if [[ ${RUBY_VERSION: -1} = m ]]; then
@@ -62,18 +62,18 @@ for RUBY_VERSION in $RUBY_VERSIONS; do
   echo "Creating benchmark data for $(ruby -v) and RUBYOPT=${RUBYOPT}"
 
     for KD_VERSION in $KD_VERSIONS; do
-        echo "Using kramdown version $KD_VERSION"
+        echo "Using kramdown2 version $KD_VERSION"
         git co $KD_VERSION 2>/dev/null
         if [ -z $MASTER_AS -o $KD_VERSION != master ]; then
             VNUM=${KD_VERSION}
         else
             VNUM=$MASTER_AS
         fi
-        ruby -I${TMPDIR}/kramdown/lib ../generate_data.rb -k ${VNUM} -a ${AVERAGE} >/dev/null
+        ruby -I${TMPDIR}/kramdown2/lib ../generate_data.rb -k ${VNUM} -a ${AVERAGE} >/dev/null
     done
 
     if [ $OTHERS = "true" ]; then
-        ruby -rubygems -I${TMPDIR}/kramdown/lib ../generate_data.rb -o >/dev/null
+        ruby -rubygems -I${TMPDIR}/kramdown2/lib ../generate_data.rb -o >/dev/null
     fi
 done
 

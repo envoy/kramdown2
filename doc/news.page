@@ -16,7 +16,7 @@ opts = {:alcn => '/news/*.html', :sort => 'sort_info', :reverse => true, :flatte
 context.website.ext.item_tracker.add(context.dest_node, :nodes, :node_finder_option_set,
   {:opts => opts, :ref_alcn => context.node.alcn}, :content)
 context.website.ext.node_finder.find(opts, context.node).each do |node|
- # context.options['contentprocessor.kramdown.options'] = {:auto_id_prefix => node.lcn.tr('.', '-')}
+ # context.options['contentprocessor.kramdown2.options'] = {:auto_id_prefix => node.lcn.tr('.', '-')}
 %>
 
 <div class='news-item'>

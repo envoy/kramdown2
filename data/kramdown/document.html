@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html;charset=<%= @converter.root.options[:encoding] %>">
     <% end %>
 <%
-extend ::Kramdown::Utils::Html
+extend ::Kramdown2::Utils::Html
 title = ''
 h = @converter.root.children.find {|c| c.type == :header}
 if h
@@ -14,7 +14,7 @@ if h
 end
 %>
     <title><%= title %></title>
-    <meta name="generator" content="kramdown <%= ::Kramdown::VERSION %>" />
+    <meta name="generator" content="kramdown2 <%= ::Kramdown2::VERSION %>" />
   </head>
   <body>
   <%= @body %>

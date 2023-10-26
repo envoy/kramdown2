@@ -4,19 +4,19 @@
 #--
 # Copyright (C) 2009-2019 Thomas Leitner <t_leitner@gmx.at>
 #
-# This file is part of kramdown which is licensed under the MIT.
+# This file is part of kramdown2 which is licensed under the MIT.
 #++
 #
 
 require 'optparse'
 require 'rbconfig'
 require 'yaml'
-require 'kramdown'
+require 'kramdown2'
 
 def add_kramdown_options(opts, parsed_options, banner: [], ignore: [])
   banner_shown = false
   defined_options = []
-  Kramdown::Options.definitions.sort.each do |n, definition|
+  Kramdown2::Options.definitions.sort.each do |n, definition|
     next if ignore.include?(n)
 
     unless banner_shown
@@ -28,12 +28,12 @@ def add_kramdown_options(opts, parsed_options, banner: [], ignore: [])
 
     defined_options << n
     no = n.to_s.tr('_', '-')
-    if definition.type == Kramdown::Options::Boolean
-      opts.on("--[no-]#{no}") {|v| parsed_options[n] = Kramdown::Options.parse(n, v) }
+    if definition.type == Kramdown2::Options::Boolean
+      opts.on("--[no-]#{no}") {|v| parsed_options[n] = Kramdown2::Options.parse(n, v) }
     else
       type = definition.type
       type = String if type == Symbol || type == Object
-      opts.on("--#{no} ARG", type) {|v| parsed_options[n] = Kramdown::Options.parse(n, v) }
+      opts.on("--#{no} ARG", type) {|v| parsed_options[n] = Kramdown2::Options.parse(n, v) }
     end
 
     definition.desc.split(/\n/).each do |line|
@@ -63,23 +63,23 @@ format = ['html']
 
 defined_options = []
 OptionParser.new do |opts|
-  opts.banner = "Usage: kramdown [options] [FILE FILE ...]"
+  opts.banner = "Usage: kramdown2 [options] [FILE FILE ...]"
   opts.summary_indent = ' ' * 4
 
   opts.separator ""
   opts.separator "Command line options:"
   opts.separator ""
 
-  opts.on("-i", "--input ARG", "Specify the input format: kramdown (default), " \
+  opts.on("-i", "--input ARG", "Specify the input format: kramdown2 (default), " \
           "html, or markdown") {|v| options[:input] = v }
   opts.on("-o", "--output ARG", Array, "Specify one or more output formats separated by commas: " \
-          "html (default),", "kramdown, latex, man or remove_html_tags") {|v| format = v }
-  opts.on("-x", "--extension EXT", Array, "Load one or more extensions (without the 'kramdown-' " \
+          "html (default),", "kramdown2, latex, man or remove_html_tags") {|v| format = v }
+  opts.on("-x", "--extension EXT", Array, "Load one or more extensions (without the 'kramdown2-' " \
           "prefix) separated", "by commas (e.g. parser-gfm,syntax-coderay)",
           "Note: Use this option before other options!") do |exts|
     exts.each do |ext|
       begin
-        require "kramdown-#{ext}"
+        require "kramdown2-#{ext}"
         new_options = add_kramdown_options(opts, options, banner: ["#{ext} options:"],
                                            ignore: defined_options)
         defined_options.concat(new_options)
@@ -91,13 +91,13 @@ OptionParser.new do |opts|
   opts.separator ""
   opts.on("--no-config-file", "Do not read any configuration file. Default behavior is to check " \
           "for a", "configuration file and read it if it exists.") { config_file = nil }
-  opts.on("--config-file FILE", "Specify the name of a configuration file with kramdown options " \
+  opts.on("--config-file FILE", "Specify the name of a configuration file with kramdown2 options " \
           "in YAML", "format, e.g. \"auto_id_prefix: ARG\" instead of \"--auto-id-prefix ARG\"",
           "and \"auto_ids: false\" instead of \"--no-auto-ids\".",
           "Default: #{config_file}") {|v| config_file = v }
   opts.separator ""
-  opts.on("-v", "--version", "Show the version of kramdown") do
-    puts Kramdown::VERSION
+  opts.on("-v", "--version", "Show the version of kramdown2") do
+    puts Kramdown2::VERSION
     exit
   end
   opts.on("-h", "--help", "Show the help") do
@@ -105,7 +105,7 @@ OptionParser.new do |opts|
     exit
   end
 
-  new_options = add_kramdown_options(opts, options, banner: ["kramdown options:"])
+  new_options = add_kramdown_options(opts, options, banner: ["kramdown2 options:"])
   defined_options.concat(new_options)
 end.parse!
 
@@ -118,15 +118,15 @@ begin
     when Hash
       options = config_file_options.merge(options)
     else
-      raise Kramdown::Error, "No YAML map in configuration file \"#{config_file}\""
+      raise Kramdown2::Error, "No YAML map in configuration file \"#{config_file}\""
     end
   end
-  doc = Kramdown::Document.new(ARGF.read, options)
+  doc = Kramdown2::Document.new(ARGF.read, options)
   result = ''
   format.each {|f| result = doc.send("to_#{f}") }
   puts result
   doc.warnings.each {|warn| $stderr.puts "Warning: #{warn}" }
-rescue Kramdown::Error => e
+rescue Kramdown2::Error => e
   $stderr.puts "Error: #{e.message}"
   exit(1)
 end

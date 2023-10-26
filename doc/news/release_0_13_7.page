@@ -1,18 +1,18 @@
 ---
-title: kramdown 0.13.7 released
+title: kramdown2 0.13.7 released
 no_output: true
 sort_info: r00137
 created_at: 2012-06-03 09:50:00 +02:00
 modified_at: 2012-06-03 09:50:00 +02:00
 ---
-## kramdown 0.13.7 released
+## kramdown2 0.13.7 released
 
 This release, aside from fixing bugs and some other minor changes, adds a new converter for removing
 HTML tags from an element tree. This means that one can now do
 
-    kramdown -i html -o remove_html_tags,kramdown my_document.html
+    kramdown2 -i html -o remove_html_tags,kramdown2 my_document.html
 
-and get a nice kramdown document from a full HTML document!
+and get a nice kramdown2 document from a full HTML document!
 
 ## Changes
 
@@ -23,7 +23,7 @@ and get a nice kramdown document from a full HTML document!
 
 * 3 minor changes
 
-  - Updated kramdown binary to support multiple, chained output formats
+  - Updated kramdown2 binary to support multiple, chained output formats
   - Added a new option for setting a default coderay highlighting language (requested by Lou
     Quillio)
   - Feature request [RF#29575]: Added support for `&shy;` soft-hyphen entity (requested by Alexander

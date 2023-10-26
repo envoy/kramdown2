@@ -1,11 +1,11 @@
 ---
-title: kramdown 1.4.0 released
+title: kramdown2 1.4.0 released
 no_output: true
 sort_info: r0140
 created_at: 2014-06-18 06:00:00 +02:00
 modified_at: 2014-06-18 06:00:00 +02:00
 ---
-## kramdown 1.4.0 released
+## kramdown2 1.4.0 released
 
 This release fixes all outstanding bugs, so it is recommended to update. The one new feature is that
 the location of the footnotes can now be defined by attaching the reference name "footnotes" to an
@@ -24,7 +24,7 @@ use the former!
 
   - Implemented [#106]: Users can now define the location of the footnotes (feature request by Matt
     Neuburg)
-  - Merged [#97]: `rake gemspec` now generates a local `kramdown.gemspec` file (pull request by
+  - Merged [#97]: `rake gemspec` now generates a local `kramdown2.gemspec` file (pull request by
     Nathanael Jones)
 
 * 9 bug fixes:
@@ -37,7 +37,7 @@ use the former!
     (reported by Denis Defreyne)
   - Fixed [#114]: Added missing HTML entity names (reported by Tomer Cohen)
   - Fixed [#101]: Fixed exception on missing alignment information when parsing HTML tables to
-    native kramdown elements (initial pull request by zonecheung)
+    native kramdown2 elements (initial pull request by zonecheung)
   - Fixed [#117]: The GFM parser now needs a space after a hash so that the line is identified as an
     atx header (reported by Trevo Wennblom)
   - Fixed [#131]: Location tracking in nested list was incorrect (reported by Mark Harrison)
@@ -47,17 +47,17 @@ use the former!
   - Fixed [#135]: Escaped pipes in alternative text of image links were not correctly escaped
     (reported by Philipp Rudloff)
 
-[#128]: https://github.com/gettalong/kramdown/issues/128
-[#129]: https://github.com/gettalong/kramdown/issues/129
-[#112]: https://github.com/gettalong/kramdown/issues/112
-[#114]: https://github.com/gettalong/kramdown/issues/114
-[#101]: https://github.com/gettalong/kramdown/pull/101
-[#117]: https://github.com/gettalong/kramdown/issues/117
-[#97]:  https://github.com/gettalong/kramdown/pull/97
-[#106]: https://github.com/gettalong/kramdown/issues/106
-[#131]: https://github.com/gettalong/kramdown/pull/131
-[#134]: https://github.com/gettalong/kramdown/issues/134
-[#46]:  https://github.com/gettalong/kramdown/issues/46
-[#107]: https://github.com/gettalong/kramdown/issues/107
-[#135]: https://github.com/gettalong/kramdown/issues/135
-[#23]:  https://github.com/gettalong/kramdown/pull/23
+[#128]: https://github.com/gettalong/kramdown2/issues/128
+[#129]: https://github.com/gettalong/kramdown2/issues/129
+[#112]: https://github.com/gettalong/kramdown2/issues/112
+[#114]: https://github.com/gettalong/kramdown2/issues/114
+[#101]: https://github.com/gettalong/kramdown2/pull/101
+[#117]: https://github.com/gettalong/kramdown2/issues/117
+[#97]:  https://github.com/gettalong/kramdown2/pull/97
+[#106]: https://github.com/gettalong/kramdown2/issues/106
+[#131]: https://github.com/gettalong/kramdown2/pull/131
+[#134]: https://github.com/gettalong/kramdown2/issues/134
+[#46]:  https://github.com/gettalong/kramdown2/issues/46
+[#107]: https://github.com/gettalong/kramdown2/issues/107
+[#135]: https://github.com/gettalong/kramdown2/issues/135
+[#23]:  https://github.com/gettalong/kramdown2/pull/23

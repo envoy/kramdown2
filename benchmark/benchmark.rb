@@ -1,7 +1,7 @@
 require 'benchmark'
 require 'stringio'
 
-require 'kramdown'
+require 'kramdown2'
 require 'bluecloth'
 require 'maruku'
 require 'maruku/version'
@@ -26,7 +26,7 @@ FILES.each do |file|
   puts
   puts "Test using file #{file} and #{RUNS} runs"
   results = Benchmark.bmbm do |b|
-    b.report("kramdown #{Kramdown::VERSION}") { RUNS.times { Kramdown::Document.new(data).to_html } }
+    b.report("kramdown2 #{Kramdown2::VERSION}") { RUNS.times { Kramdown2::Document.new(data).to_html } }
     b.report("Maruku #{MaRuKu::Version}") { RUNS.times { Maruku.new(data, :on_error => :ignore).to_html } }
     b.report("BlueFeather #{BlueFeather::VERSION}") { RUNS.times { BlueFeather.parse(data) } }
     b.report("BlueCloth #{BlueCloth::VERSION}") { RUNS.times { BlueCloth.new(data).to_html } }
@@ -35,7 +35,7 @@ FILES.each do |file|
   end
 
   puts
-  puts "Real time of X divided by real time of kramdown"
+  puts "Real time of X divided by real time of kramdown2"
   kd = results.shift.real
   %w[Maruku BlueFeather BlueCloth RDiscount redcarpet].each do |name|
     puts name.ljust(19) << (results.shift.real/kd).round(4).to_s

@@ -4,16 +4,16 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="Thomas Leitner" />
     <meta name="copyright" content="2009-2019 Thomas Leitner" />
-    <meta name="description" content="kramdown is a fast, pure-Ruby Markdown-superset converter" />
-    <meta name="keywords" content="ruby, kramdown, markdown, text markup" />
+    <meta name="description" content="kramdown2 is a fast, pure-Ruby Markdown-superset converter" />
+    <meta name="keywords" content="ruby, kramdown2, markdown, text markup" />
     <link href="{relocatable: default.css}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="{relocatable: news.atom}" type="application/atom+xml" rel="alternate" />
-    <title>{title:} | kramdown</title>
+    <title>{title:} | kramdown2</title>
   </head>
   <body>
     <header>
       <hgroup>
-        <h1 id="logo"><a href="{relocatable: /}" title="Homepage">kramdown</a></h1>
+        <h1 id="logo"><a href="{relocatable: /}" title="Homepage">kramdown2</a></h1>
         <h2 id="slogan">fast, pure-Ruby Markdown-superset converter</h2>
       </hgroup>
 

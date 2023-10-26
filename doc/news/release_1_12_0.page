@@ -1,11 +1,11 @@
 ---
-title: kramdown 1.12.0 released
+title: kramdown2 1.12.0 released
 no_output: true
 sort_info: r1120
 created_at: 2016-08-15 10:45:00 +02:00
 modified_at: 2016-08-15 10:45:00 +02:00
 ---
-## kramdown 1.12.0 released
+## kramdown2 1.12.0 released
 
 This release features two enhancements for definition lists:
 
@@ -47,7 +47,7 @@ list/blockquotes/codeblocks that are used directly after a paragraph (i.e. witho
     [#355], requested by Greg Wilson)
   - Removed obfuscation for e-mail links (fixes [#343], requested by Anton Tsyganenko)
   - New option 'gfm_quirks' for enabling/disabling parsing differences of the GFM parser with
-    respect to the kramdown parser
+    respect to the kramdown2 parser
 
 * 4 bug fixes:
 
@@ -68,14 +68,14 @@ list/blockquotes/codeblocks that are used directly after a paragraph (i.e. witho
     patch by Cédric Boutillier)
   - JRuby is now also tested via TravisCI (fixes [#363], patch by Shuanglei Tao)
 
-[#334]: https://github.com/gettalong/kramdown/issues/334
-[#343]: https://github.com/gettalong/kramdown/issues/343
-[#342]: https://github.com/gettalong/kramdown/issues/342
-[#353]: https://github.com/gettalong/kramdown/issues/353
-[#355]: https://github.com/gettalong/kramdown/issues/355
-[#345]: https://github.com/gettalong/kramdown/pull/345
-[#356]: https://github.com/gettalong/kramdown/pull/356
-[#358]: https://github.com/gettalong/kramdown/pull/358
-[#336]: https://github.com/gettalong/kramdown/issues/336
-[#359]: https://github.com/gettalong/kramdown/issues/359
-[#363]: https://github.com/gettalong/kramdown/pull/363
+[#334]: https://github.com/gettalong/kramdown2/issues/334
+[#343]: https://github.com/gettalong/kramdown2/issues/343
+[#342]: https://github.com/gettalong/kramdown2/issues/342
+[#353]: https://github.com/gettalong/kramdown2/issues/353
+[#355]: https://github.com/gettalong/kramdown2/issues/355
+[#345]: https://github.com/gettalong/kramdown2/pull/345
+[#356]: https://github.com/gettalong/kramdown2/pull/356
+[#358]: https://github.com/gettalong/kramdown2/pull/358
+[#336]: https://github.com/gettalong/kramdown2/issues/336
+[#359]: https://github.com/gettalong/kramdown2/issues/359
+[#363]: https://github.com/gettalong/kramdown2/pull/363

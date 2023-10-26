@@ -1,21 +1,21 @@
 ---
-title: kramdown Converter
+title: kramdown2 Converter
 ---
-# kramdown Converter
+# kramdown2 Converter
 
 ## Introduction
 
-This converter converts a kramdown element tree into a kramdown document and supports all available
+This converter converts a kramdown2 element tree into a kramdown2 document and supports all available
 element types. This converter, together with the [HTML parser](../parser/html.html), can be used to
-convert HTML documents to kramdown documents.
+convert HTML documents to kramdown2 documents.
 
-Another use would be to format a badly styled kramdown document (i.e. one with wrapped lines,
+Another use would be to format a badly styled kramdown2 document (i.e. one with wrapped lines,
 multiple different indentations used in one list, ...).
 
 
 ## Options
 
-The kramdown converter supports the following options:
+The kramdown2 converter supports the following options:
 
 {options: {items: [entity_output, template]}}
 
